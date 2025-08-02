@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import NavBar from "./Component/NavBar";
+import HeroSection from "./Component/HeroSection";
+import ArticleSection from "./Component/ArticleSection";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <section>
-    <h1>My First React App on Vite</h1>
-</section>
-
+    
+      <NavBar />
+      <HeroSection />
+      <ArticleSection />
+      
     </>
-  )
+  );
 }
 
-export default App
+export default App;

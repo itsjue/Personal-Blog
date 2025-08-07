@@ -1,6 +1,6 @@
-import NavBar from "./Component/NavBar";
-import HeroSection from "./Component/HeroSection";
-import ArticleSection from "./Component/ArticleSection";
+
+import {NavBar, HeroSection, Footer} from "./components/Nav-Hero-FooterSection";
+import {ArticleSection} from "./components/ArticleSection";
 
 function App() {
   return (
@@ -8,8 +8,9 @@ function App() {
     
       <NavBar />
       <HeroSection />
-      {/* <ArticleSection /> */}
-      
+      <ArticleSection />
+      <Footer />
+
     </>
   );
 }

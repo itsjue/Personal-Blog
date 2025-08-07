@@ -5,6 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import BlogCard from "./BlogCard";
+import { blogPosts } from "@/data/blogPosts.js";
 
 export function ArticleSection() {
   return (
@@ -95,6 +97,21 @@ export function ArticleSection() {
             </SelectContent>
           </Select>
         </div>
+      </div>
+      <div className="w-[90%] h-auto mx-auto mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {blogPosts.map((post) => (
+          <BlogCard
+            key={post.id}
+            image={post.image}
+            category={post.category}
+            title={post.title}
+            description={post.description}
+            author={post.author}
+            date={post.date}
+          />
+        ))}
+      </div>
       </div>
     </div>
   );

@@ -9,6 +9,8 @@ import BlogCard from "./BlogCard";
 import { blogPosts } from "@/data/blogPosts.js";
 
 export function ArticleSection() {
+  const articleCategories = ["Highlight", "Cat", "Inspiration", "General"];
+
   return (
     <div className="my-[40px]">
       <div className="w-[90%] mx-auto">
@@ -19,38 +21,15 @@ export function ArticleSection() {
         {/* Desktop Device */}
         <div className="justify-between px-6 py-4 my-10 bg-[#EFEEEB] rounded-2xl hidden lg:flex">
           <ul className="flex gap-2.5">
-            <li className="flex items-center">
-              <a
-                href="#"
-                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
+            {articleCategories.map((category) => (
+              <li className="flex items-center">
+              <button
+                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] cursor-pointer hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
               >
-                Highlight
-              </a>
+                {category}
+              </button>
             </li>
-            <li className="flex items-center">
-              <a
-                href="#"
-                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
-              >
-                Cat
-              </a>
-            </li>
-            <li className="flex items-center">
-              <a
-                href="#"
-                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
-              >
-                Inspiration
-              </a>
-            </li>
-            <li className="flex items-center">
-              <a
-                href="#"
-                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
-              >
-                General
-              </a>
-            </li>
+            ))}
           </ul>
           <div className="relative">
             <input
@@ -90,10 +69,9 @@ export function ArticleSection() {
               <SelectValue placeholder="Highlight" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="highlight">Highlight</SelectItem>
-              <SelectItem value="cat">Cat</SelectItem>
-              <SelectItem value="inspiration">Inspiration</SelectItem>
-              <SelectItem value="general">General</SelectItem>
+              {articleCategories.map((category) => (
+                <SelectItem value={category}>{category}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>

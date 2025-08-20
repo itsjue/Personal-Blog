@@ -7,9 +7,18 @@ import {
 } from "@/components/ui/select";
 import BlogCard from "./BlogCard";
 import { blogPosts } from "@/data/blogPosts.js";
+import { useState } from "react";
 
 export function ArticleSection() {
   const articleCategories = ["Highlight", "Cat", "Inspiration", "General"];
+  const [category, setCategory] = useState("Highlight");
+  const [search, setSearch] = useState("");
+
+  const filteredPosts = (category === "Highlight" ? blogPosts : blogPosts.filter((p) => p.category === category))
+    .filter((p) =>
+      p.title.toLowerCase().includes(search.toLowerCase()) ||
+      p.description.toLowerCase().includes(search.toLowerCase())
+    );
 
   return (
     <div className="my-[40px]">
@@ -21,20 +30,23 @@ export function ArticleSection() {
         {/* Desktop Device */}
         <div className="justify-between px-6 py-4 my-10 bg-[#EFEEEB] rounded-2xl hidden lg:flex">
           <ul className="flex gap-2.5">
-            {articleCategories.map((category) => (
-              <li className="flex items-center">
-              <button
-                className="text-[#75716B] font-medium py-3 px-5 rounded-[8px] cursor-pointer hover:bg-[#DAD6D1] hover:text-[#43403B] transition"
-              >
-                {category}
-              </button>
-            </li>
+            {articleCategories.map((cat) => (
+              <li key={cat} className="flex items-center">
+                <button
+                  className={`text-[#75716B] font-medium py-3 px-5 rounded-[8px] cursor-pointer hover:bg-[#DAD6D1] hover:text-[#43403B] transition${category === cat ? ' bg-[#DAD6D1] text-[#43403B]' : ''}`}
+                  onClick={() => setCategory(cat)}
+                >
+                  {cat}
+                </button>
+              </li>
             ))}
           </ul>
           <div className="relative">
             <input
               type="text"
               placeholder="Search"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
               className="w-[360px] self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
             />
             <img
@@ -52,6 +64,8 @@ export function ArticleSection() {
           <input
             type="text"
             placeholder="Search"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
             className="w-full self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
           />
           <img
@@ -77,19 +91,19 @@ export function ArticleSection() {
         </div>
       </div>
       <div className="w-[90%] h-auto mx-auto mt-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {blogPosts.map((post) => (
-          <BlogCard
-            key={post.id}
-            image={post.image}
-            category={post.category}
-            title={post.title}
-            description={post.description}
-            author={post.author}
-            date={post.date}
-          />
-        ))}
-      </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {filteredPosts.map((post) => (
+            <BlogCard
+              key={post.id}
+              image={post.image}
+              category={post.category}
+              title={post.title}
+              description={post.description}
+              author={post.author}
+              date={post.date}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

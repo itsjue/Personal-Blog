@@ -6,15 +6,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import BlogCard from "./BlogCard";
-import { blogPosts } from "@/data/blogPosts.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export function ArticleSection() {
   const articleCategories = ["Highlight", "Cat", "Inspiration", "General"];
   const [category, setCategory] = useState("Highlight");
   const [search, setSearch] = useState("");
 
-  const filteredPosts = (category === "Highlight" ? blogPosts : blogPosts.filter((p) => p.category === category))
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const getPosts = async () => {
+    try {
+      const response = await axios.get('https://blog-post-project-api.vercel.app/posts');
+      setPosts(response.data.posts);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
+
+  const filteredPosts = (category === "Highlight" ? posts : posts.filter((p) => p.category === category))
     .filter((p) =>
       p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.description.toLowerCase().includes(search.toLowerCase())
@@ -92,15 +107,19 @@ export function ArticleSection() {
       </div>
       <div className="w-[90%] h-auto mx-auto mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {filteredPosts.map((post) => (
-            <BlogCard
-              key={post.id}
-              image={post.image}
-              category={post.category}
-              title={post.title}
-              description={post.description}
-              author={post.author}
-              date={post.date}
+
+          {filteredPosts.map((post, index) => (
+            <BlogCard key={index}
+            title={post.title}
+            description={post.description}
+            author={post.author}
+            date={new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+            image={post.image}
+            category={post.category}
             />
           ))}
         </div>

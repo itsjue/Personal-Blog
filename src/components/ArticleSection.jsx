@@ -110,6 +110,7 @@ export function ArticleSection() {
 
           {filteredPosts.map((post, index) => (
             <BlogCard key={index}
+            id={index + 1}
             title={post.title}
             description={post.description}
             author={post.author}

@@ -1,11 +1,12 @@
 import { Linkedin, Github, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function NavBar() {
   return (
     <nav className="flex justify-between items-center relative bg-[#F9F8F6] border-b-[1px] border-[#DAD6D1] px-16 py-3 lg:px-32 lg:py-4">
-      <a href="#">
+      <Link to={`/`}>
         <img src="src/assets/logo.png" alt="hh_logo" className="size-11" />
-      </a>
+      </Link>
       <a href="#">
         <img
           src="src/assets/hamburger_menu.png"
@@ -89,7 +90,7 @@ export function Footer() {
         <a href="#"><Github size={24} color="#26231E" /></a>
         <a href="#"><Mail size={24} color="#26231E" /></a>
       </div>
-      <a href="#" className="text-[16px] font-medium underline text-[#26231E]">Homepage</a>
+      <Link to={`/`} className="text-[16px] font-medium underline text-[#26231E]">Homepage</Link>
     </div>
   );
 }

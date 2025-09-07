@@ -11,6 +11,7 @@ function ViewPostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [likes, setLikes] = useState(post.likes || 0);
 
   const isoDate = post.date;
   const formattedDate = new Date(isoDate).toLocaleDateString("en-GB", {

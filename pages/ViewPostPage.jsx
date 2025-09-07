@@ -6,12 +6,13 @@ import axios from "axios";
 import AuthorCard from "@/components/cards/AuthorCard";
 import {authors} from "@/data/authors";
 import CommentSection from "@/components/CommentSection";
+import CreateAccountCard from "@/components/cards/CreateAccountCard";
+import StatusCard from "@/components/cards/StatusCard";
 
 function ViewPostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [likes, setLikes] = useState(post.likes || 0);
 
   const isoDate = post.date;
   const formattedDate = new Date(isoDate).toLocaleDateString("en-GB", {
@@ -62,6 +63,17 @@ function ViewPostPage() {
           </div>
           <CommentSection />
         </div>
+
+        <CreateAccountCard />
+        <StatusCard
+        title="Copied!"
+        description="This article has been copied to your clipboard."
+        bgColor="bg-[#12B279]" />
+
+        <StatusCard
+        title="Your password is incorrect or this email doesn't exist"
+        description="Please try another password or email"
+        bgColor="bg-[#EB5164]" />
 
       <Footer />
     </>

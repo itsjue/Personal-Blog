@@ -109,8 +109,8 @@ export function ArticleSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           {filteredPosts.map((post, index) => (
-            <BlogCard key={index}
-            id={index + 1}
+            <BlogCard key={post.id}
+            id={post.id}
             title={post.title}
             description={post.description}
             author={post.author}

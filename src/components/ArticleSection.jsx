@@ -5,7 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import BlogCard from "./BlogCard";
+import BlogCard from "./cards/BlogCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 

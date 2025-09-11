@@ -1,11 +1,9 @@
-import { NavBar } from "@/components/Nav-Hero-FooterSection";
 import LogInSection from "@/components/LogInSection";
 
-function LogInPage() {
+function LogInPage({setUser}) {
   return (
     <>
-      <NavBar />
-      <LogInSection />
+      <LogInSection setUser={setUser} />
     </>
   );
 }

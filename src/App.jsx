@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import HomePage from "/pages/HomePage";
+import { NavBar } from "./components/Nav-Hero-FooterSection";
 import ViewPostPage from "/pages/ViewPostPage";
 import PageNotFound from "/pages/PageNotFound";
 import LogInPage from "/pages/LoginPage";
@@ -8,12 +10,14 @@ import AdminLogInPage from "/pages/adminPages/AdminLoginPage";
 import MemberProfilePage from "/pages/memberManagement/MemberProfilePage";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <Router>
+      <NavBar user={user} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts/:id" element={<ViewPostPage />} />
-        <Route path="/login" element={<LogInPage />} />
+        <Route path="/login" element={<LogInPage setUser={setUser} />} />
         <Route path="/signup" element={<SignUpPage />} />
 
         <Route path="/member-profile" element={<MemberProfilePage />} />

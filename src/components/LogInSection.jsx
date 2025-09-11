@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { mockUsersData } from "@/data/mockUsers";
 import { useState } from "react";
 import StatusCard from "@/components/cards/StatusCard";
 
-function LogInSection() {
+function LogInSection({setUser}) {
   const [form, setForm] = useState({email: "", password: ""});
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -20,11 +21,12 @@ function LogInSection() {
     );
 
     if (user) {
-      setSuccess(true);
-      setError(false);
+      setUser(user);
+      setError("");
+      navigate("/")
     } else {
       setError(true);
-      setSuccess(false);
+
     }
   };
 

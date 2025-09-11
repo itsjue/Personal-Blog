@@ -1,7 +1,7 @@
-import { Linkedin, Github, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Linkedin, Github, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export function NavBar() {
+export function NavBar({ user }) {
   return (
     <nav className="flex justify-between items-center relative bg-[#F9F8F6] border-b-[1px] border-[#DAD6D1] px-16 py-3 lg:px-32 lg:py-4">
       <Link to={`/`}>
@@ -15,16 +15,44 @@ export function NavBar() {
         />
       </a>
       <div className="flex gap-1.5">
-        <Link to={`/login`}
-          className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition hidden lg:block"
-        >
-          Login
-        </Link>
-        <Link to={`/signup`}
-          className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"
-        >
-          Sign up
-        </Link>
+        {user ? (
+          <div className="flex items-center gap-1">
+            <div className="relative flex justify-center items-center size-12 border border-[#EFEEEB] bg-[#ffffff] rounded-full mr-4">
+              <div className="absolute size-2 bg-[#EB5164] rounded-full top-0.5 right-1"></div>
+              <img
+                src="/src/assets/bell_icon.png"
+                alt="notification_icon"
+                className="size-6"
+              />
+            </div>
+            <img
+              src={user.image}
+              alt={user.name}
+              className="size-12 rounded-full object-cover"
+            />
+            <p className="font-medium text-[#43403B]">{user.name}</p>
+            <img
+              src="/src/assets/expand_down_icon.png"
+              alt="expand_down_icon"
+              className="size-4"
+            />
+          </div>
+        ) : (
+          <>
+            <Link
+              to={`/login`}
+              className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition hidden lg:block"
+            >
+              Login
+            </Link>
+            <Link
+              to={`/signup`}
+              className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"
+            >
+              Sign up
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
@@ -84,11 +112,22 @@ export function Footer() {
     <div className="bg-[#EFEEEB] w-[100vw] h-[] lg:h-36 flex flex-col lg:flex-row gap-6 justify-between items-center py-[60px] px-[120px]">
       <div className="flex gap-6">
         <h2 className="text-[16px] font-medium text-[#26231E]">Get in touch</h2>
-        <a href="#"><Linkedin size={24} color="#26231E" /></a>
-        <a href="#"><Github size={24} color="#26231E" /></a>
-        <a href="#"><Mail size={24} color="#26231E" /></a>
+        <a href="#">
+          <Linkedin size={24} color="#26231E" />
+        </a>
+        <a href="#">
+          <Github size={24} color="#26231E" />
+        </a>
+        <a href="#">
+          <Mail size={24} color="#26231E" />
+        </a>
       </div>
-      <Link to={`/`} className="text-[16px] font-medium underline text-[#26231E]">Homepage</Link>
+      <Link
+        to={`/`}
+        className="text-[16px] font-medium underline text-[#26231E]"
+      >
+        Homepage
+      </Link>
     </div>
   );
 }

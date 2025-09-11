@@ -63,11 +63,6 @@ function ViewPostSection() {
           <CommentSection />
         </div>
 
-        <StatusCard
-        title="Your password is incorrect or this email doesn't exist"
-        description="Please try another password or email"
-        bgColor="bg-[#EB5164]" />
-
     </>
   )}
 

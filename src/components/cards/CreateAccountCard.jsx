@@ -13,12 +13,11 @@ function CreateAccountCard({ onClose }) {
         Create an account to <br />
         continue
       </h1>
-      <a
-        href="#"
+      <Link to={`/signup`}
         className="bg-[#26231E] text-white py-3 px-10 rounded-full font-medium hover:bg-[#75716B] transition"
       >
         Create account
-      </a>
+      </Link>
       <div className="flex gap-3 mt-10">
         <p className="text-[#75716B] font-medium">Already have an account?</p>
         <Link to={`/login`} className="font-medium underline">

@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 function LogInSection() {
   return (
     <>
       <div className="w-screen">
-        <div className="w-[798px] h-[540px] flex flex-col items-center justify-center m-auto mt-[60px] rounded-2xl bg-[#EFEEEB]">
+        <div className="w-[798px] h-[540px] flex flex-col items-center justify-center m-auto my-[60px] rounded-2xl bg-[#EFEEEB]">
           <h1 className="font-semibold text-[40px] text-[#26231E]">Log in</h1>
           <form action="" className="flex flex-col gap-1">
             <label htmlFor="email" className="font-medium text-[#75716B]">
@@ -29,10 +31,10 @@ function LogInSection() {
             </button>
           </form>
           <div className="flex">
-            <p className="text-[#75716B]">Don't have any account?</p>
-            <a href="#" className="ml-3 underline">
+            <p className="text-[#75716B] font-medium">Don't have any account?</p>
+            <Link to={`/signup`} className="ml-3 underline font-medium">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </div>

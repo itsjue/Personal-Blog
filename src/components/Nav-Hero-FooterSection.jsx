@@ -1,6 +1,5 @@
 import { Linkedin, Github, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import LogInPage from '/pages/LoginPage';
 
 export function NavBar() {
   return (
@@ -21,12 +20,11 @@ export function NavBar() {
         >
           Login
         </Link>
-        <a
-          href="#"
+        <Link to={`/signup`}
           className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"
         >
           Sign up
-        </a>
+        </Link>
       </div>
     </nav>
   );

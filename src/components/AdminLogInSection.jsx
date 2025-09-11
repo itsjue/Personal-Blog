@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-
-function LogInSection() {
+function AdminLogInSection() {
   return (
     <>
       <div className="w-screen">
         <div className="w-[798px] h-[540px] flex flex-col items-center justify-center m-auto my-[60px] rounded-2xl bg-[#EFEEEB]">
+          <h2 className="font-semibold text-xl text-[#F2B68C]">Admin Panel</h2>
           <h1 className="font-semibold text-[40px] text-[#26231E]">Log in</h1>
           <form action="" className="flex flex-col gap-1">
             <label htmlFor="email" className="font-medium text-[#75716B]">
@@ -13,7 +12,6 @@ function LogInSection() {
             <input
               type="email"
               placeholder="Email"
-              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <label
@@ -25,23 +23,16 @@ function LogInSection() {
             <input
               type="password"
               placeholder="Password"
-              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <button className="w-fit h-fit  flex self-center py-3 px-10 text-white bg-[#26231E] rounded-full my-10 hover:cursor-pointer hover:bg-[#75716B] transition">
               Log in
             </button>
           </form>
-          <div className="flex">
-            <p className="text-[#75716B] font-medium">Don't have any account?</p>
-            <Link to={`/signup`} className="ml-3 underline font-medium">
-              Sign up
-            </Link>
-          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default LogInSection;
+export default AdminLogInSection;

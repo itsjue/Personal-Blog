@@ -21,7 +21,7 @@ function BlogCard(props) {
         <p className="text-muted-foreground text-sm mb-4 flex-grow line-clamp-3">
         {description}</p>
         <div className="flex items-center text-sm">
-          <img className="w-8 h-8 rounded-full mr-2" src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg" alt="Tomson P." />
+          <img className="w-8 h-8 rounded-full mr-2 object-cover" src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg" alt="Tomson P." />
           <span>{author}</span>
           <span className="mx-2 text-gray-300">|</span>
           <span>{date}</span>

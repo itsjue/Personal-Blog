@@ -1,5 +1,6 @@
 import { Linkedin, Github, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import LogInPage from '/pages/LoginPage';
 
 export function NavBar() {
   return (
@@ -15,12 +16,11 @@ export function NavBar() {
         />
       </a>
       <div className="flex gap-1.5">
-        <a
-          href="#"
+        <Link to={`/login`}
           className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition hidden lg:block"
         >
           Login
-        </a>
+        </Link>
         <a
           href="#"
           className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"

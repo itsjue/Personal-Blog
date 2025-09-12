@@ -1,5 +1,6 @@
 import { Linkedin, Github, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import HamburgerMenu from "./menu/HamburgerMenu";
 
 export function NavBar({ user }) {
   return (
@@ -7,13 +8,9 @@ export function NavBar({ user }) {
       <Link to={`/`}>
         <img src="/src/assets/logo.png" alt="hh_logo" className="size-11" />
       </Link>
-      <a href="#">
-        <img
-          src="/src/assets/hamburger_menu.png"
-          alt="menu"
-          className="size-11 absolute -translate-x-1/2 -translate-y-1/2 right-1/18 lg:hidden"
-        />
-      </a>
+      
+      <HamburgerMenu />
+
       <div className="flex gap-1.5">
         {user ? (
           <div className="flex items-center gap-1">

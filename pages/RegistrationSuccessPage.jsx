@@ -1,9 +1,9 @@
-import { NavBar } from "@/components/Nav-Hero-FooterSection"
+import SignupSuccessfully from "@/components/SignupSuccessfully"
 
 function RegistrationSuccessPage() {
     return (
         <>
-        
+        <SignupSuccessfully />
         </>
     )
 }

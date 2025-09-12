@@ -1,6 +1,7 @@
 import { Linkedin, Github, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import HamburgerMenu from "./menu/HamburgerMenu";
+import ProfileMenu from "./menu/profileMenu";
 
 export function NavBar({ user }) {
   return (
@@ -8,13 +9,13 @@ export function NavBar({ user }) {
       <Link to={`/`}>
         <img src="/src/assets/logo.png" alt="hh_logo" className="size-11" />
       </Link>
-      
+
       <HamburgerMenu />
 
       <div className="flex gap-1.5">
         {user ? (
-          <div className="flex items-center gap-1">
-            <div className="relative flex justify-center items-center size-12 border border-[#EFEEEB] bg-[#ffffff] rounded-full mr-4">
+          <div className="flex items-center">
+            <div className="relative flex justify-center items-center size-12 border border-[#EFEEEB] bg-[#ffffff] rounded-full mr-4 cursor-pointer">
               <div className="absolute size-2 bg-[#EB5164] rounded-full top-0.5 right-1"></div>
               <img
                 src="/src/assets/bell_icon.png"
@@ -22,17 +23,9 @@ export function NavBar({ user }) {
                 className="size-6"
               />
             </div>
-            <img
-              src={user.image}
-              alt={user.name}
-              className="size-12 rounded-full object-cover"
-            />
-            <p className="font-medium text-[#43403B]">{user.name}</p>
-            <img
-              src="/src/assets/expand_down_icon.png"
-              alt="expand_down_icon"
-              className="size-4"
-            />
+
+              <ProfileMenu user={user} />
+
           </div>
         ) : (
           <>

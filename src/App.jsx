@@ -7,10 +7,11 @@ import PageNotFound from "/pages/PageNotFound";
 import LogInPage from "/pages/LoginPage";
 import SignUpPage from "/pages/SignUpPage";
 import AdminLogInPage from "/pages/adminPages/AdminLoginPage";
-import MemberProfilePage from "/pages/memberManagement/MemberProfilePage";
+import UserProfilePage from "/pages/userManagement/UserProfilePage";
 
 function App() {
   const [user, setUser] = useState(null);
+
   return (
     <Router>
       <NavBar user={user} />
@@ -20,7 +21,8 @@ function App() {
         <Route path="/login" element={<LogInPage setUser={setUser} />} />
         <Route path="/signup" element={<SignUpPage />} />
 
-        <Route path="/member-profile" element={<MemberProfilePage />} />
+        <Route path="/user/profile" element={<UserProfilePage defaultTab="profile" user={user} />} />
+        <Route path="/user/resetpassword" element={<UserProfilePage defaultTab="reset" user={user} />} />
 
         <Route path="/admin-login" element={<AdminLogInPage />} />
 

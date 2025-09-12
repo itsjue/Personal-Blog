@@ -14,6 +14,8 @@ function SignUpSection() {
               type="text"
               name="name"
               id="name"
+              placeholder="Full name"
+              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <label htmlFor="username" className="font-medium text-[#75716B] mt-7">
@@ -23,6 +25,8 @@ function SignUpSection() {
               type="user"
               name="username"
               id="username"
+              placeholder="Username"
+              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <label htmlFor="email" className="font-medium text-[#75716B] mt-7">
@@ -32,6 +36,8 @@ function SignUpSection() {
               type="email"
               name="email"
               id="email"
+              placeholder="Email"
+              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <label htmlFor="password" className="font-medium text-[#75716B] mt-7">
@@ -41,6 +47,8 @@ function SignUpSection() {
               type="password"
               name="password"
               id="password"
+              placeholder="Password"
+              required
               className="w-[558px] h-12 border border-[#DAD6D1] bg-white rounded-[8px] px-4 placeholder:text-[#75716B]"
             />
             <button className="w-fit h-fit  flex self-center py-3 px-10 text-white bg-[#26231E] rounded-full my-10 hover:cursor-pointer hover:bg-[#75716B] transition">

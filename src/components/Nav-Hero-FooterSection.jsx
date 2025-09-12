@@ -1,30 +1,43 @@
-import { Linkedin, Github, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Linkedin, Github, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
+import HamburgerMenu from "./menu/HamburgerMenu";
+import ProfileMenu from "./menu/profileMenu";
+import NotificationMenu from "./menu/NotificationMenu";
 
-export function NavBar() {
+export function NavBar({ user }) {
   return (
     <nav className="flex justify-between items-center relative bg-[#F9F8F6] border-b-[1px] border-[#DAD6D1] px-16 py-3 lg:px-32 lg:py-4">
       <Link to={`/`}>
         <img src="/src/assets/logo.png" alt="hh_logo" className="size-11" />
       </Link>
-      <a href="#">
-        <img
-          src="/src/assets/hamburger_menu.png"
-          alt="menu"
-          className="size-11 absolute -translate-x-1/2 -translate-y-1/2 right-1/18 lg:hidden"
-        />
-      </a>
+
+      <HamburgerMenu />
+
       <div className="flex gap-1.5">
-        <Link to={`/login`}
-          className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition hidden lg:block"
-        >
-          Login
-        </Link>
-        <Link to={`/signup`}
-          className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"
-        >
-          Sign up
-        </Link>
+        {user ? (
+          <div className="flex items-center">
+
+              <NotificationMenu />
+
+              <ProfileMenu user={user} />
+
+          </div>
+        ) : (
+          <>
+            <Link
+              to={`/login`}
+              className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition hidden lg:block"
+            >
+              Login
+            </Link>
+            <Link
+              to={`/signup`}
+              className="bg-[#26231E] text-white px-10 py-3 rounded-full hover:bg-[#75716B] transition hidden lg:block"
+            >
+              Sign up
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
@@ -84,11 +97,22 @@ export function Footer() {
     <div className="bg-[#EFEEEB] w-[100vw] h-[] lg:h-36 flex flex-col lg:flex-row gap-6 justify-between items-center py-[60px] px-[120px]">
       <div className="flex gap-6">
         <h2 className="text-[16px] font-medium text-[#26231E]">Get in touch</h2>
-        <a href="#"><Linkedin size={24} color="#26231E" /></a>
-        <a href="#"><Github size={24} color="#26231E" /></a>
-        <a href="#"><Mail size={24} color="#26231E" /></a>
+        <a href="#">
+          <Linkedin size={24} color="#26231E" />
+        </a>
+        <a href="#">
+          <Github size={24} color="#26231E" />
+        </a>
+        <a href="#">
+          <Mail size={24} color="#26231E" />
+        </a>
       </div>
-      <Link to={`/`} className="text-[16px] font-medium underline text-[#26231E]">Homepage</Link>
+      <Link
+        to={`/`}
+        className="text-[16px] font-medium underline text-[#26231E]"
+      >
+        Homepage
+      </Link>
     </div>
   );
 }

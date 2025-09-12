@@ -8,6 +8,7 @@ import LogInPage from "/pages/LoginPage";
 import SignUpPage from "/pages/SignUpPage";
 import AdminLogInPage from "/pages/adminPages/AdminLoginPage";
 import UserProfilePage from "/pages/userManagement/UserProfilePage";
+import RegistrationSuccessPage from "/pages/RegistrationSuccessPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/posts/:id" element={<ViewPostPage />} />
         <Route path="/login" element={<LogInPage setUser={setUser} />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signup/successfully" element={<RegistrationSuccessPage />} />
 
         <Route path="/user/profile" element={<UserProfilePage defaultTab="profile" user={user} />} />
         <Route path="/user/resetpassword" element={<UserProfilePage defaultTab="reset" user={user} />} />

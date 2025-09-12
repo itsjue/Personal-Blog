@@ -2,6 +2,7 @@ import { Linkedin, Github, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import HamburgerMenu from "./menu/HamburgerMenu";
 import ProfileMenu from "./menu/profileMenu";
+import NotificationMenu from "./menu/NotificationMenu";
 
 export function NavBar({ user }) {
   return (
@@ -15,14 +16,8 @@ export function NavBar({ user }) {
       <div className="flex gap-1.5">
         {user ? (
           <div className="flex items-center">
-            <div className="relative flex justify-center items-center size-12 border border-[#EFEEEB] bg-[#ffffff] rounded-full mr-4 cursor-pointer">
-              <div className="absolute size-2 bg-[#EB5164] rounded-full top-0.5 right-1"></div>
-              <img
-                src="/src/assets/bell_icon.png"
-                alt="notification_icon"
-                className="size-6"
-              />
-            </div>
+
+              <NotificationMenu />
 
               <ProfileMenu user={user} />
 

@@ -1,7 +1,9 @@
+import { NavBar } from "@/components/Nav-Hero-FooterSection"
+
 function RegistrationSuccessPage() {
     return (
         <>
-        <div>Registration Success Page</div>
+        
         </>
     )
 }

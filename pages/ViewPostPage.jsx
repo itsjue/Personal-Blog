@@ -6,7 +6,6 @@ function ViewPostPage() {
   return (
     <>
     <ViewPostSection />
-        <ResetPasswordCard />
     <Footer />
     </>
   )

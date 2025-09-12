@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import ResetPasswordCard from "./cards/ResetPasswordCard";
+import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 
 export function UserProfileSection({ activeTab, user }) {
   if (activeTab !== "profile" || !user) return null;
-
-  const [showCard, setShowCard] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -12,12 +12,12 @@ export function UserProfileSection({ activeTab, user }) {
   });
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       setFormData({
-      name: user.name || "",
-      username: user.username || "",
-      email: user.email || "",
-    });
+        name: user.name || "",
+        username: user.username || "",
+        email: user.email || "",
+      });
     }
   }, [user]);
 
@@ -32,7 +32,7 @@ export function UserProfileSection({ activeTab, user }) {
   const handleSave = (e) => {
     e.preventDefault();
     // waiting for logic
-  }
+  };
 
   return (
     <>
@@ -82,10 +82,11 @@ export function UserProfileSection({ activeTab, user }) {
               >
                 Email
               </label>
-              <p className="mt-3 text-[#75716B] pl-5">
-                {formData.email}
-              </p>
-              <button type="submit" className="w-fit h-fit flex bg-[#26231E] text-[#ffffff] font-medium py-3 px-10 rounded-full mt-10 hover:bg-[#75716B] transition hover:cursor-pointer">
+              <p className="mt-3 text-[#75716B] pl-5">{formData.email}</p>
+              <button
+                type="submit"
+                className="w-fit h-fit flex bg-[#26231E] text-[#ffffff] font-medium py-3 px-10 rounded-full mt-10 hover:bg-[#75716B] transition hover:cursor-pointer"
+              >
                 Save
               </button>
             </form>
@@ -97,13 +98,27 @@ export function UserProfileSection({ activeTab, user }) {
 }
 
 export function UserResetPasswordSection({ activeTab, user }) {
+  const [showResetPasswordCard, setShowResetPasswordCard] = useState(false);
 
   return (
     <>
+      <AlertDialog
+        open={showResetPasswordCard}
+        onOpenChange={setShowResetPasswordCard}
+      >
+        <AlertDialogContent className="p-0 bg-transparent shadow-none border-none">
+          <ResetPasswordCard onClose={() => setShowResetPasswordCard(false)}
+          />
+        </AlertDialogContent>
+      </AlertDialog>
+      
       {activeTab === "reset" && (
         <>
           <div className="w-[550px] bg-[#EFEEEB] p-10 ml-12 mt-[30px] rounded-2xl">
-            <form action="" className="flex flex-col">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex flex-col"
+            >
               <label
                 htmlFor="currentPassword"
                 className="text-[#75716B] font-medium"
@@ -134,7 +149,11 @@ export function UserResetPasswordSection({ activeTab, user }) {
                 type="password"
                 className="w-[470px] h-[48px] border border-[#DAD6D1] bg-[#ffffff] p-4 mt-1 rounded-[8px]"
               />
-              <button className="w-fit h-fit flex bg-[#26231E] text-[#ffffff] font-medium py-3 px-10 rounded-full mt-10 hover:bg-[#75716B] transition hover:cursor-pointer">
+              <button
+                type="button"
+                onClick={() => setShowResetPasswordCard(true)}
+                className="w-fit h-fit flex bg-[#26231E] text-[#ffffff] font-medium py-3 px-10 rounded-full mt-10 hover:bg-[#75716B] transition hover:cursor-pointer"
+              >
                 Reset password
               </button>
             </form>

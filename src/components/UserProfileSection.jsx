@@ -99,6 +99,25 @@ export function UserProfileSection({ activeTab, user }) {
 
 export function UserResetPasswordSection({ activeTab, user }) {
   const [showResetPasswordCard, setShowResetPasswordCard] = useState(false);
+  const [formData, setFormData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const isFormValid =
+  formData.currentPassword.trim() !== "" &&
+  formData.newPassword.trim() !== "" &&
+  formData.confirmNewPassword.trim() !== "" &&
+  formData.newPassword === formData.confirmNewPassword;
 
   return (
     <>
@@ -121,12 +140,17 @@ export function UserResetPasswordSection({ activeTab, user }) {
             >
               <label
                 htmlFor="currentPassword"
+                required
                 className="text-[#75716B] font-medium"
               >
                 Current password
               </label>
               <input
                 type="password"
+                name="currentPassword"
+                required
+                value={formData.currentPassword}
+                onChange={handleChange}
                 className="w-[470px] h-[48px] border border-[#DAD6D1] bg-[#ffffff] p-4 mt-1 rounded-[8px]"
               />
               <label
@@ -137,6 +161,10 @@ export function UserResetPasswordSection({ activeTab, user }) {
               </label>
               <input
                 type="password"
+                name="newPassword"
+                required
+                value={formData.newPassword}
+                onChange={handleChange}
                 className="w-[470px] h-[48px] border border-[#DAD6D1] bg-[#ffffff] p-4 mt-1 rounded-[8px]"
               />
               <label
@@ -147,6 +175,10 @@ export function UserResetPasswordSection({ activeTab, user }) {
               </label>
               <input
                 type="password"
+                name="confirmNewPassword"
+                required
+                value={formData.confirmNewPassword}
+                onChange={handleChange}
                 className="w-[470px] h-[48px] border border-[#DAD6D1] bg-[#ffffff] p-4 mt-1 rounded-[8px]"
               />
               <button

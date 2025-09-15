@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 import HomePage from "/pages/HomePage";
 import { NavBar } from "./components/Nav-Hero-FooterSection";
@@ -11,12 +11,13 @@ import UserProfilePage from "/pages/userManagement/UserProfilePage";
 import RegistrationSuccessPage from "/pages/RegistrationSuccessPage";
 import ArticleManagementPage from "/pages/adminPages/ArticleManagementPage";
 
-function App() {
-  const [user, setUser] = useState(null);
+function AppRoutes({ user, setUser }) {
+  const location = useLocation();
+  const showNavBar = !location.pathname.includes("admin");
 
   return (
-    <Router>
-      <NavBar user={user} />
+    <>
+      {showNavBar && <NavBar user={user} />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts/:id" element={<ViewPostPage />} />
@@ -32,6 +33,16 @@ function App() {
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  const [user, setUser] = useState(null);
+
+  return (
+    <Router>
+      <AppRoutes user={user} setUser={setUser} />
     </Router>
   );
 }

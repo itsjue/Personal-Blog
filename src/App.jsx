@@ -9,6 +9,7 @@ import SignUpPage from "/pages/SignUpPage";
 import AdminLogInPage from "/pages/adminPages/AdminLoginPage";
 import UserProfilePage from "/pages/userManagement/UserProfilePage";
 import RegistrationSuccessPage from "/pages/RegistrationSuccessPage";
+import ArticleManagementPage from "/pages/adminPages/ArticleManagementPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/user/resetpassword" element={<UserProfilePage defaultTab="reset" user={user} />} />
 
         <Route path="/admin-login" element={<AdminLogInPage />} />
+        <Route path="/admin-article-management" element={<ArticleManagementPage />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>

@@ -1,6 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function AdminArticleSection() {
+  const [activeTab, setActiveTab] = useState("acticleManagement");
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    getArticle();
+  }, []);
+
+  const getArticle = async () => {
+    try {
+      const response = await axios.get('https://blog-post-project-api.vercel.app/posts');
+      setArticles(response.data.posts);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
+
+  
+
   return (
     <>
       <div className="flex">
@@ -23,7 +43,7 @@ function AdminArticleSection() {
                   alt="notebook_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Article management</button>
+                <button className="text-[#75716B] cursor-pointer">Article management</button>
               </div>
               <div className="flex gap-3 py-5 px-6">
                 <img
@@ -31,7 +51,7 @@ function AdminArticleSection() {
                   alt="file_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Category management</button>
+                <button className="text-[#75716B] cursor-pointer">Category management</button>
               </div>
               <div className="flex gap-3 py-5 px-6">
                 <img
@@ -39,7 +59,7 @@ function AdminArticleSection() {
                   alt="user_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Profile</button>
+                <button className="text-[#75716B] cursor-pointer">Profile</button>
               </div>
               <div className="flex gap-3 py-5 px-6">
                 <img
@@ -47,7 +67,7 @@ function AdminArticleSection() {
                   alt="bell_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Notification</button>
+                <button className="text-[#75716B] cursor-pointer">Notification</button>
               </div>
               <div className="flex gap-3 py-5 px-6">
                 <img
@@ -55,7 +75,7 @@ function AdminArticleSection() {
                   alt="reset_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Reset password</button>
+                <button className="text-[#75716B] cursor-pointer">Reset password</button>
               </div>
             </div>
 
@@ -66,7 +86,7 @@ function AdminArticleSection() {
                   alt="out_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">hh. website</button>
+                <Link to="/"><button className="text-[#75716B] cursor-pointer">hh. website</button></Link>
               </div>
               <div className="flex items-center gap-3 py-5 pl-6 mb-4 border-t border-[#DAD6D1]">
                 <img
@@ -74,7 +94,7 @@ function AdminArticleSection() {
                   alt="signout_icon"
                   className="size-6"
                 />
-                <button className="text-[#75716B]">Log out</button>
+                <button className="text-[#75716B] cursor-pointer">Log out</button>
               </div>
             </div>
           </div>
@@ -86,7 +106,7 @@ function AdminArticleSection() {
               <h3 className="font-semibold text-6 text-[#26231E]">
                 Article management
               </h3>
-              <button className="bg-[#26231E] text-white py-3 px-10 rounded-full">
+              <button className="bg-[#26231E] text-white py-3 px-10 rounded-full cursor-pointer">
                 Create article
               </button>
             </div>
@@ -138,78 +158,29 @@ function AdminArticleSection() {
               </div>
             </div>
 
-            <div className="w-[1040px] flex items-center mx-auto border-l border-r border-b border-[#DAD6D1]">
+            {/* Table Rows */}
+          {articles.map((article, index) => (
+            <div
+              key={article.id}
+              className={`w-[1040px] flex items-center mx-auto border-l border-r border-b border-[#DAD6D1] 
+              ${index % 2 !== 0 ? "bg-[#EFEEEB]" : "bg-white"} 
+              ${index === articles.length - 1 ? "rounded-b-xl" : ""}`}
+            >
               <p className="w-[600px] text-[#43403B] py-5 px-6 truncate">
-                Understanding Cat Behavior: Why Your Feline Friend Acts the Way
-                They Do
+                {article.title}
               </p>
-              <p className="w-[120px] text-[#43403B] py-5 px-6 ml-25">Cat</p>
-              <p className="w-[180px] text-[#43403B] py-5 px-6">Published</p>
+              <p className="w-[120px] text-[#43403B] py-5 px-20">{article.category || "General"}</p>
+              <p className="w-[180px] text-[#43403B] py-5 px-12">{article.status || "Draft"}</p>
               <div className="flex gap-5 py-5 px-6">
-                <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/edit_icon.png"
-                  alt="edit_icon"
-                /></button>
-                 <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/trash_icon.png"
-                  alt="trash_icon"
-                /></button>
+                <button className="size-6 cursor-pointer">
+                  <img src="/src/assets/edit_icon.png" alt="edit_icon" />
+                </button>
+                <button className="size-6 cursor-pointer">
+                  <img src="/src/assets/trash_icon.png" alt="trash_icon" />
+                </button>
               </div>
             </div>
-
-            <div className="w-[1040px] bg-[#EFEEEB] flex items-center mx-auto border-l border-r border-b border-[#DAD6D1]">
-              <p className="w-[600px] text-[#43403B] py-5 px-6 truncate">
-                The Fascinating World of Cats: Why We Love Our Furry Friends
-              </p>
-              <p className="w-[120px] text-[#43403B] py-5 px-6 ml-25">Cat</p>
-              <p className="w-[180px] text-[#43403B] py-5 px-6">Published</p>
-              <div className="flex gap-5 py-5 px-6">
-                <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/edit_icon.png"
-                  alt="edit_icon"
-                /></button>
-                <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/trash_icon.png"
-                  alt="trash_icon"
-                /></button>
-              </div>
-            </div>
-
-            <div className="w-[1040px] flex items-center mx-auto border-l border-r border-b border-[#DAD6D1]">
-              <p className="w-[600px] text-[#43403B] py-5 px-6 truncate">
-                Finding Motivation: How to Stay Inspired Through Life's Challenges
-              </p>
-              <p className="w-[120px] text-[#43403B] py-5 px-6 ml-25">General</p>
-              <p className="w-[180px] text-[#43403B] py-5 px-6">Published</p>
-              <div className="flex gap-5 py-5 px-6">
-                <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/edit_icon.png"
-                  alt="edit_icon"
-                /></button>
-                 <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/trash_icon.png"
-                  alt="trash_icon"
-                /></button>
-              </div>
-            </div>
-
-            <div className="w-[1040px] bg-[#EFEEEB] flex items-center mx-auto border-l border-r border-b border-[#DAD6D1] rounded-b-xl">
-              <p className="w-[600px] text-[#43403B] py-5 px-6 truncate">
-                The Science of the Cat’s Purr: How It Benefits Cats and Humans Alike
-              </p>
-              <p className="w-[120px] text-[#43403B] py-5 px-6 ml-25">Cat</p>
-              <p className="w-[180px] text-[#43403B] py-5 px-6">Published</p>
-              <div className="flex gap-5 py-5 px-6">
-                <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/edit_icon.png"
-                  alt="edit_icon"
-                /></button>
-                 <button className="size-6 cursor-pointer"><img
-                  src="/src/assets/trash_icon.png"
-                  alt="trash_icon"
-                /></button>
-              </div>
-            </div>
+          ))}
           </div>
         </div>
       </div>

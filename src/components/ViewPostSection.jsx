@@ -5,7 +5,6 @@ import axios from "axios";
 import AuthorCard from "@/components/cards/AuthorCard";
 import {authors} from "@/data/authors";
 import CommentSection from "@/components/CommentSection";
-import StatusCard from "@/components/cards/StatusCard";
 
 function ViewPostSection() {
   const { id } = useParams();

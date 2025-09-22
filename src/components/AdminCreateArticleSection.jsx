@@ -1,15 +1,30 @@
 import AdminSideBarMenu from "./menu/AdminSideBarMenu";
+import CategoriesDropDownMenu from "./menu/CategoriesDropdownMenu";
+import { useState } from "react";
 
 function AdminCreateArticleSection() {
+  const [thumbnail, setThumbnail] = useState(null);
+
+  const handleThumbnailChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setThumbnail(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <div>
         <div className="flex">
           <AdminSideBarMenu />
-          <div className="flex flex-1">
+          <div className="flex flex-1 bg-[#F9F8F6]">
             <div className="flex flex-col flex-1">
               <div className="flex justify-between items-center h-[96px] px-[60px] border-b border-[#DAD6D1]">
-                <h3 className="font-semibold text-6 text-[#26231E]">
+                <h3 className="font-semibold text-2xl text-[#26231E]">
                   Create article
                 </h3>
                 <div className="flex gap-2">
@@ -19,6 +34,80 @@ function AdminCreateArticleSection() {
                   <button className="bg-[#26231E] text-white py-3 px-10 rounded-full hover:bg-[#75716B] transition cursor-pointer">
                     Save and Publish
                   </button>
+                </div>
+              </div>
+
+              <div className="w-full h-full flex flex-col pt-10 pb-[120px] px-[60px]">
+                <p className="font-medium text-[#75716B]">Thumbnail image</p>
+                <div className="flex items-end gap-7">
+                  <div className="w-[460px] h-[260px] flex justify-center items-center bg-[#EFEEEB] border border-dashed border-[#DAD6D1] mt-4 rounded-md">
+                    {thumbnail ? (
+                      <img
+                      src={thumbnail}
+                      alt="thumbnail_preview"
+                      className="object-cover w-full h-full rounded-md"
+                    />
+                    ) : (
+                      <img
+                      src="src/assets/Img_box_icon.png"
+                      alt="img_box_icon"
+                      className="size-10"
+                    />
+                    )}         
+                  </div>
+
+                  <input
+                    id="thumbnailUpload"
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleThumbnailChange}
+                  />
+                  <label
+                    htmlFor="thumbnailUpload"
+                    className="bg-white text-[#26231E] border border-[#75716B] py-3 px-10 rounded-full cursor-pointer hover:text-[#75716B] hover:border-[#75716B] transition"
+                  >
+                    Upload thumbnail image
+                  </label>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="font-medium text-[#75716B] mt-7">Category</p>
+                  <div className="flex flex-col">
+                    <CategoriesDropDownMenu />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#75716B] mt-7">Author name</p>
+                  <input
+                    type="text"
+                    placeholder="Thompson P."
+                    disabled
+                    className="max-w-[480px] bg-[#EFEEEB] placeholder:text-[#75716B] py-3 px-4 rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#75716B] mt-7">Title</p>
+                  <input
+                    type="text"
+                    placeholder="Article title"
+                    className="flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#75716B] mt-7">
+                    Introduction (max 120 letters)
+                  </p>
+                  <textarea
+                    placeholder="Introduction"
+                    className="min-h-[143px] flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#75716B] mt-7">Content</p>
+                  <textarea
+                    placeholder="Content"
+                    className="min-h-[572px] flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
+                  />
                 </div>
               </div>
             </div>

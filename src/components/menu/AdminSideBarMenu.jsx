@@ -7,6 +7,7 @@ function AdminSideBarMenu() {
 
   return (
     <>
+    <div className="bg-[#F9F8F6]">
       <div className="flex flex-col w-[280px] h-screen bg-[#EFEEEB]">
         <div className="pt-[74.15px] pl-[26.2px]">
           <img
@@ -124,6 +125,7 @@ function AdminSideBarMenu() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

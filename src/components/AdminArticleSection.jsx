@@ -103,9 +103,9 @@ function AdminArticleSection() {
                   {article.status || "Draft"}
                 </p>
                 <div className="flex gap-5 py-5 px-6">
-                  <button className="size-6 cursor-pointer">
+                  <Link to={`/admin-article-edit/${article.id}`} className="size-6 cursor-pointer">
                     <img src="/src/assets/edit_icon.png" alt="edit_icon" />
-                  </button>
+                  </Link>
                   <button className="size-6 cursor-pointer">
                     <img src="/src/assets/trash_icon.png" alt="trash_icon" />
                   </button>

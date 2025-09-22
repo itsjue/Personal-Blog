@@ -2,7 +2,7 @@ import AdminSideBarMenu from "./menu/AdminSideBarMenu";
 import CategoriesDropDownMenu from "./menu/CategoriesDropdownMenu";
 import { useState } from "react";
 
-function AdminCreateArticleSection() {
+function AdminCreateArticleSection({ article, setArticle }) {
   const [thumbnail, setThumbnail] = useState(null);
 
   const handleThumbnailChange = (e) => {
@@ -40,19 +40,19 @@ function AdminCreateArticleSection() {
                 <p className="font-medium text-[#75716B]">Thumbnail image</p>
                 <div className="flex items-end gap-7">
                   <div className="w-[460px] h-[260px] flex justify-center items-center bg-[#EFEEEB] border border-dashed border-[#DAD6D1] mt-4 rounded-md">
-                    {thumbnail ? (
+                    {article.thumbnail ? (
                       <img
-                      src={thumbnail}
-                      alt="thumbnail_preview"
-                      className="object-cover w-full h-full rounded-md"
-                    />
+                        src={article.thumbnail}
+                        alt="thumbnail_preview"
+                        className="object-cover w-full h-full rounded-md"
+                      />
                     ) : (
                       <img
-                      src="src/assets/Img_box_icon.png"
-                      alt="img_box_icon"
-                      className="size-10"
-                    />
-                    )}         
+                        src="src/assets/Img_box_icon.png"
+                        alt="img_box_icon"
+                        className="size-10"
+                      />
+                    )}
                   </div>
 
                   <input
@@ -71,7 +71,12 @@ function AdminCreateArticleSection() {
                 </div>
                 <div className="flex flex-col gap-1">
                   <div className="flex flex-col">
-                    <CategoriesDropDownMenu />
+                    <CategoriesDropDownMenu
+                      value={article.category}
+                      onChange={(cat) =>
+                        setArticle({ ...article, category: cat })
+                      }
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -87,7 +92,11 @@ function AdminCreateArticleSection() {
                   <p className="text-[#75716B] mt-7">Title</p>
                   <input
                     type="text"
+                    value={article.title}
                     placeholder="Article title"
+                    onChange={(e) =>
+                      setArticle({ ...article, title: e.target.value })
+                    }
                     className="flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
                   />
                 </div>
@@ -97,6 +106,10 @@ function AdminCreateArticleSection() {
                   </p>
                   <textarea
                     placeholder="Introduction"
+                    value={article.intro}
+                    onChange={(e) =>
+                      setArticle({ ...article, intro: e.target.value })
+                    }
                     className="min-h-[143px] flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
                   />
                 </div>
@@ -104,6 +117,10 @@ function AdminCreateArticleSection() {
                   <p className="text-[#75716B] mt-7">Content</p>
                   <textarea
                     placeholder="Content"
+                    value={article.content}
+                    onChange={(e) =>
+                      setArticle({ ...article, content: e.target.value })
+                    }
                     className="min-h-[572px] flex justify-between w-full font-medium text-[#75716B] bg-[#FFFFFF] border border-[#DAD6D1] py-3 px-4 rounded-lg"
                   />
                 </div>

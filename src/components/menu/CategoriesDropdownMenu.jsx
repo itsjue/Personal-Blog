@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function CategoriesDropDownMenu() {
+function CategoriesDropDownMenu({ value, onChange }) {
   const [selected, setSelected] = useState("Select category");
   const [open, setOpen] = useState(false);
-
   const categories = ["Cat", "General", "Inspiration"];
+
+  useEffect(() => {
+    if (value) setSelected(value);
+  }, [value]);
+
+  const handleSelect = (cat) => {
+    setSelected(cat);
+    setOpen(false);
+    if (onChange) onChange(cat); // ส่งค่ากลับ parent
+  };
 
   return (
     <>
@@ -32,10 +41,7 @@ function CategoriesDropDownMenu() {
             {categories.map((cat) => (
               <li
                 key={cat}
-                onClick={() => {
-                  setSelected(cat);
-                  setOpen(false);
-                }}
+                onClick={() => handleSelect(cat)}
                 className="px-4 py-2 hover:bg-[#F9F8F6] cursor-pointer"
               >
                 {cat}

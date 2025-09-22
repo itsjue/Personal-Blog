@@ -1,13 +1,42 @@
 import AdminCreateArticleSection from "./AdminCreateArticleSection";
 import DeleteArticleCard from "./cards/DeleteArticleCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function AdminEditArticleSection() {
+
+function AdminEditArticleSection({articleId}) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const [article, setArticle] = useState({
+        title: "",
+        intro: "",
+        content: "",
+        thumbnail: null,
+        category: "",
+        author: "",
+    });
+
+    useEffect(() => {
+        if (!articleId) return;
+        axios
+      .get(`https://blog-post-project-api.vercel.app/posts/${articleId}`)
+      .then((res) => {
+        const data = res.data;
+        setArticle({
+          title: data.title || "",
+          intro: data.description || "",
+          content: data.content || "",
+          thumbnail: data.image || null,
+          category: data.category || "",
+          author: data.author || "Thompson P.",
+        });
+      })
+      .catch((err) => console.error(err));
+    }, [articleId])
 
   return (
     <div className="flex flex-col">
-      <AdminCreateArticleSection />
+      <AdminCreateArticleSection article={article} setArticle={setArticle} />
 
       <div className="ml-[60px] mb-20">
         <button onClick={() => setShowDeleteModal(true)} className="flex items-center gap-1.5 rounded-md cursor-pointer">

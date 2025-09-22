@@ -33,7 +33,7 @@ function AppRoutes({ user, setUser }) {
         <Route path="/admin-login" element={<AdminLogInPage />} />
         <Route path="/admin-article-management" element={<ArticleManagementPage />} />
         <Route path="/admin-article-create" element={<AdminCreateArticlePage />} />
-        <Route path="/admin-article-edit" element={<AdminEditArticlePage />} />
+        <Route path="/admin-article-edit/:id" element={<AdminEditArticlePage />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>

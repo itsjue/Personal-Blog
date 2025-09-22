@@ -31,7 +31,7 @@ function AppRoutes({ user, setUser }) {
         <Route path="/user/resetpassword" element={<UserProfilePage defaultTab="reset" user={user} />} />
 
         <Route path="/admin-login" element={<AdminLogInPage />} />
-        <Route path="/admin-article-management" element={<ArticleManagementPage />} />
+        <Route path="/admin-articles" element={<ArticleManagementPage />} />
         <Route path="/admin-article-create" element={<AdminCreateArticlePage />} />
         <Route path="/admin-article-edit/:id" element={<AdminEditArticlePage />} />
 

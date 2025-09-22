@@ -12,7 +12,7 @@ function CategoriesDropDownMenu({ value, onChange }) {
   const handleSelect = (cat) => {
     setSelected(cat);
     setOpen(false);
-    if (onChange) onChange(cat); // ส่งค่ากลับ parent
+    if (onChange) onChange(cat);
   };
 
   return (
@@ -20,7 +20,6 @@ function CategoriesDropDownMenu({ value, onChange }) {
       <div className="flex flex-col gap-1 relative max-w-[480px]">
         <p className="font-medium text-[#75716B] mt-7">Category</p>
 
-        {/* ปุ่มกด */}
         <button
           type="button"
           onClick={() => setOpen(!open)}

@@ -28,7 +28,7 @@ function AdminEditArticleSection({articleId}) {
           content: data.content || "",
           thumbnail: data.image || null,
           category: data.category || "",
-          author: data.author || "Thompson P.",
+          author: data.author || "",
         });
       })
       .catch((err) => console.error(err));

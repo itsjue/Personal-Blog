@@ -24,12 +24,12 @@ function AdminArticleSection() {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex bg-[#F9F8F6]">
         <AdminSideBarMenu />
         <div className="flex flex-1">
           <div className="flex flex-col flex-1">
             <div className="flex justify-between items-center h-[96px] px-[60px] border-b border-[#DAD6D1]">
-              <h3 className="font-semibold text-6 text-[#26231E]">
+              <h3 className="font-semibold text-2xl text-[#26231E]">
                 Article management
               </h3>
               
@@ -103,9 +103,9 @@ function AdminArticleSection() {
                   {article.status || "Draft"}
                 </p>
                 <div className="flex gap-5 py-5 px-6">
-                  <button className="size-6 cursor-pointer">
+                  <Link to={`/admin-article-edit/${article.id}`} className="size-6 cursor-pointer">
                     <img src="/src/assets/edit_icon.png" alt="edit_icon" />
-                  </button>
+                  </Link>
                   <button className="size-6 cursor-pointer">
                     <img src="/src/assets/trash_icon.png" alt="trash_icon" />
                   </button>

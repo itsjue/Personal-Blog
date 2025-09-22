@@ -11,6 +11,7 @@ import UserProfilePage from "/pages/userManagement/UserProfilePage";
 import RegistrationSuccessPage from "/pages/RegistrationSuccessPage";
 import ArticleManagementPage from "/pages/adminPages/ArticleManagementPage";
 import AdminCreateArticlePage from "/pages/adminPages/AdminCreateArticlePage";
+import AdminEditArticlePage from "/pages/adminPages/AdminEditArticlePage";
 
 function AppRoutes({ user, setUser }) {
   const location = useLocation();
@@ -32,6 +33,7 @@ function AppRoutes({ user, setUser }) {
         <Route path="/admin-login" element={<AdminLogInPage />} />
         <Route path="/admin-article-management" element={<ArticleManagementPage />} />
         <Route path="/admin-article-create" element={<AdminCreateArticlePage />} />
+        <Route path="/admin-article-edit" element={<AdminEditArticlePage />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>

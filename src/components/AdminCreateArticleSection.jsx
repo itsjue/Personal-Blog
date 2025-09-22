@@ -20,7 +20,6 @@ function AdminCreateArticleSection() {
     <>
       <div>
         <div className="flex">
-          <AdminSideBarMenu />
           <div className="flex flex-1 bg-[#F9F8F6]">
             <div className="flex flex-col flex-1">
               <div className="flex justify-between items-center h-[96px] px-[60px] border-b border-[#DAD6D1]">
@@ -37,7 +36,7 @@ function AdminCreateArticleSection() {
                 </div>
               </div>
 
-              <div className="w-full h-full flex flex-col pt-10 pb-[120px] px-[60px]">
+              <div className="w-full h-full flex flex-col pt-10 pb-7 px-[60px]">
                 <p className="font-medium text-[#75716B]">Thumbnail image</p>
                 <div className="flex items-end gap-7">
                   <div className="w-[460px] h-[260px] flex justify-center items-center bg-[#EFEEEB] border border-dashed border-[#DAD6D1] mt-4 rounded-md">
@@ -71,7 +70,6 @@ function AdminCreateArticleSection() {
                   </label>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <p className="font-medium text-[#75716B] mt-7">Category</p>
                   <div className="flex flex-col">
                     <CategoriesDropDownMenu />
                   </div>

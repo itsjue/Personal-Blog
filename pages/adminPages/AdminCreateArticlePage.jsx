@@ -1,11 +1,15 @@
-import AdminCreateArticleSection from "@/components/AdminCreateArticleSection"
+import AdminCreateArticleSection from "@/components/AdminCreateArticleSection";
+import AdminSideBarMenu from "@/components/menu/AdminSideBarMenu";
 
 function AdminCreateArticlePage() {
-    return (
-        <>
+  return (
+    <div className="flex h-fit bg-[#F9F8F6]">
+      <AdminSideBarMenu />
+      <div className="flex-1 overflow-auto">
         <AdminCreateArticleSection />
-        </>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default AdminCreateArticlePage
+export default AdminCreateArticlePage;

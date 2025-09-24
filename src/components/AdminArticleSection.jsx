@@ -133,7 +133,7 @@ function AdminArticleSection() {
                   <div className="w-[200px] flex justify-between items-center py-3 px-4 font-medium bg-white border border-[#DAD6D1] rounded-xl">
                     <p className="text-[#75716B]">Status</p>
                     <img
-                      src="src/assets/expand_down_icon.png"
+                      src="/src/assets/expand_down_icon.png"
                       alt="expand_down"
                       className="size-6"
                     />
@@ -141,7 +141,7 @@ function AdminArticleSection() {
                   <div className="w-[200px] flex justify-between items-center py-3 px-4 font-medium bg-white border border-[#DAD6D1] rounded-xl">
                     <p className="text-[#75716B]">Category</p>
                     <img
-                      src="src/assets/expand_down_icon.png"
+                      src="/src/assets/expand_down_icon.png"
                       alt="expand_down"
                       className="size-6"
                     />

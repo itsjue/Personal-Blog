@@ -67,7 +67,7 @@ export function HeroSection() {
         </div>
         <div className="w-[386px] h-[529px] overflow-hidden rounded-2xl">
           <img
-            src="src/assets/herosection_img.jpeg"
+            src="/src/assets/herosection_img.jpeg"
             alt="hero_img"
             className="w-full h-full object-cover opacity-80"
           />

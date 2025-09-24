@@ -1,7 +1,7 @@
 import { Linkedin, Github, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import HamburgerMenu from "./menu/HamburgerMenu";
-import ProfileMenu from "./menu/profileMenu";
+import ProfileMenu from "./menu/ProfileMenu";
 import NotificationMenu from "./menu/NotificationMenu";
 
 export function NavBar({ user }) {

@@ -41,7 +41,7 @@ function AdminEditArticleSection({articleId}) {
       <div className="ml-[60px] mb-20">
         <button onClick={() => setShowDeleteModal(true)} className="flex items-center gap-1.5 rounded-md cursor-pointer">
           <img
-            src="/src/assets/trash_icon.png"
+            src="./public/assets/trash_icon.png"
             alt="trash_icon"
             className="w-6 h-6"
           />
@@ -58,7 +58,6 @@ function AdminEditArticleSection({articleId}) {
             <DeleteArticleCard
               onCancel={() => setShowDeleteModal(false)}
               onConfirm={() => {
-                // logic ลบ article
                 console.log("Article deleted");
                 setShowDeleteModal(false);
               }}

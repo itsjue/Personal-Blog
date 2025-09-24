@@ -3,7 +3,7 @@ export const mockUsersData = [{
     username: "dogboyhandsomeandcool",
     password: "doggystyle",
     name: "Dog Boy",
-    image: "/src/assets/mockup_profile_pic.jpeg",
+    image: "/assets/mockup_profile_pic.jpeg",
     email: "dogboyhandsomeandcool@gmail.com",
     isAdmin: false,
 },

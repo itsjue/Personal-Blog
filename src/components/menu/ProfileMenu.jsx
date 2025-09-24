@@ -28,7 +28,7 @@ function ProfileMenu({ user }) {
         />
         <p className="font-medium text-[#43403B]">{user.name}</p>
         <img
-          src="/src/assets/expand_down_icon.png"
+          src="/assets/expand_down_icon.png"
           alt="expand_down_icon"
           className="size-4"
         />
@@ -39,7 +39,7 @@ function ProfileMenu({ user }) {
 
             <button onClick={() => handleNavigate("/user/profile")} className="flex py-3 px-4 gap-3 cursor-pointer">
               <img
-                src="/src/assets/user_icon.png"
+                src="/assets/user_icon.png"
                 alt="profile_icon"
                 className="size-6 opacity-90"
               />
@@ -48,7 +48,7 @@ function ProfileMenu({ user }) {
 
             <button  onClick={() => handleNavigate("/user/resetpassword")} className="flex py-3 px-4 gap-3 cursor-pointer">
               <img
-                src="/src/assets/reset_icon.png"
+                src="/assets/reset_icon.png"
                 alt="reset_icon"
                 className="size-6 opacity-90"
               />
@@ -57,7 +57,7 @@ function ProfileMenu({ user }) {
 
           <button className="flex py-3 px-4 gap-3 border-t border-[#dad6d1] cursor-pointer">
             <img
-              src="/src/assets/signout_icon.png"
+              src="/assets/signout_icon.png"
               alt="signout_icon"
               className="size-6 opacity-90"
             />

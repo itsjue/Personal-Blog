@@ -98,21 +98,21 @@ function CommentSection() {
 
             <a href="#">
               <img
-                src="/src/assets/facebook_logo.png"
+                src="/assets/facebook_logo.png"
                 alt="facebook_logo"
                 className="size-12"
               />
             </a>
             <a href="#">
               <img
-                src="/src/assets/linkedin_logo.png"
+                src="/assets/linkedin_logo.png"
                 alt="linkedin_logo"
                 className="size-12"
               />
             </a>
             <a href="#">
               <img
-                src="/src/assets/twitter_logo.png"
+                src="/assets/twitter_logo.png"
                 alt="twitter_logo"
                 className="size-12"
               />

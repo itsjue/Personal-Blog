@@ -95,7 +95,7 @@ function AdminCreateArticleSection({ article, setArticle }) {
                   />
                 ) : (
                   <img
-                    src="/src/assets/Img_box_icon.png"
+                    src="/assets/Img_box_icon.png"
                     alt="img_box_icon"
                     className="size-10"
                   />

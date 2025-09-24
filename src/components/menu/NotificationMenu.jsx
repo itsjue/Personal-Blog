@@ -8,7 +8,7 @@ function NotificationMenu() {
         <div className="relative flex justify-center items-center size-12 border border-[#EFEEEB] bg-[#ffffff] rounded-full mr-4 cursor-pointer">
           <div className="absolute size-2 bg-[#EB5164] rounded-full top-0.5 right-1"></div>
           <img
-            src="/src/assets/bell_icon.png"
+            src="/assets/bell_icon.png"
             alt="notification_icon"
             className="size-6"
           />
@@ -17,7 +17,7 @@ function NotificationMenu() {
         {isOpen && (
           <div className="absolute w-[362px] h-fit py-6 px-4 top-18 right-70 bg-[#F9F8F6] rounded-[12px] shadow-xl z-1">
             <div className="flex gap-5 items">
-              <img src="/src/assets/herosection_img.jpeg" alt="profile_pic" className="size-12 rounded-full object-cover" />
+              <img src="/assets/herosection_img.jpeg" alt="profile_pic" className="size-12 rounded-full object-cover" />
               <div className="flex flex-col">
               <p className="">
                 <span className="font-bold mr-1">Thompson P.</span>Published new article.
@@ -27,7 +27,7 @@ function NotificationMenu() {
             </div>
 
             <div className="flex gap-5 mt-4">
-              <img src="/src/assets/mockup_profile_pic.jpeg" alt="profile_pic" className="size-12 rounded-full object-cover" />
+              <img src="/assets/mockup_profile_pic.jpeg" alt="profile_pic" className="size-12 rounded-full object-cover" />
               <div className="flex flex-col">
               <p className="">
                 <span className="font-bold mr-1">Dog Boy</span>Comment on the article you have commented on.

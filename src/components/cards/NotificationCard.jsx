@@ -4,7 +4,7 @@ function NotificationCard() {
       <div className="flex">
         <div className="flex gap-3 mx-[60px] pb-10 mb-10 border-b border-[#DAD6D1]">
           <img
-            src="/src/assets/mockup_profile_pic.jpeg"
+            src="/assets/mockup_profile_pic.jpeg"
             alt="profile_pic"
             className="size-12 object-cover rounded-full"
           />

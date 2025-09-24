@@ -31,7 +31,7 @@ function UserProfilePage({ defaultTab }) {
       <div className="w-fit flex flex-col items-start m-auto my-[52px]">
         <div className="flex items-center">
           <img
-            src="/src/assets/mockup_profile_pic.jpeg"
+            src="/assets/mockup_profile_pic.jpeg"
             alt="profile_pic"
             className="w-[60px] h-[60px] rounded-full object-cover"
           />
@@ -55,7 +55,7 @@ function UserProfilePage({ defaultTab }) {
                   : "text-[#75716B] font-medium"
               }`}
             >
-              <img src="/src/assets/user_icon.png" alt="user_icon" className="size-6 mr-3" />
+              <img src="/assets/user_icon.png" alt="user_icon" className="size-6 mr-3" />
               <p>Profile</p>
             </button>
 
@@ -67,7 +67,7 @@ function UserProfilePage({ defaultTab }) {
                   : "text-[#75716B] font-medium"
               }`}
             >
-              <img src="/src/assets/reset_icon.png" alt="reset_icon" className="size-6 mr-3" />
+              <img src="/assets/reset_icon.png" alt="reset_icon" className="size-6 mr-3" />
               <p>Reset password</p>
             </button>
           </div>

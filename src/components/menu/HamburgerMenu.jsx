@@ -8,7 +8,7 @@ function HamburgerMenu() {
     <>
       <button onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
         <img
-          src="/src/assets/hamburger_menu.png"
+          src="/assets/hamburger_menu.png"
           alt="menu"
           className="size-11 absolute -translate-x-1/2 -translate-y-1/2 right-1/18 lg:hidden"
         />

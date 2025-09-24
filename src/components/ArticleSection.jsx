@@ -74,7 +74,7 @@ export function ArticleSection() {
               className="w-[360px] self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
             />
             <img
-              src="src/assets/search_icon.png"
+              src="/assets/search_icon.png"
               alt="search_icon"
               className="absolute size-6 -translate-x-1/2 -translate-y-1/2 top-1/2 right-[1%] opacity-70"
             />
@@ -115,7 +115,7 @@ export function ArticleSection() {
             className="w-full self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
           />
           <img
-            src="src/assets/search_icon.png"
+            src="/assets/search_icon.png"
             alt="search_icon"
             className="absolute size-6 -translate-x-1/2 -translate-y-1/2 top-1/2 right-[1%] opacity-70"
           />

@@ -6,7 +6,7 @@ function SignupSuccessfully() {
       <div className="w-screen mt-[60px]">
         <div className="bg-[#efeeeb] w-[798px] py-[80px] flex flex-col m-auto items-center justify-center gap-8 rounded-2xl">
           <img
-            src="/src/assets/success_icon.png"
+            src="/assets/success_icon.png"
             alt="success_icon"
             className="size-20"
           />

@@ -116,7 +116,7 @@ function AdminArticleSection() {
                 activeTab === "categoryManagement") && (
                 <div className="relative">
                   <img
-                    src="/src/assets/search_icon.png"
+                    src="/assets/search_icon.png"
                     alt="search_icon"
                     className="absolute size-6 translate-x-1/2 translate-y-1/2"
                   />
@@ -133,7 +133,7 @@ function AdminArticleSection() {
                   <div className="w-[200px] flex justify-between items-center py-3 px-4 font-medium bg-white border border-[#DAD6D1] rounded-xl">
                     <p className="text-[#75716B]">Status</p>
                     <img
-                      src="/src/assets/expand_down_icon.png"
+                      src="/assets/expand_down_icon.png"
                       alt="expand_down"
                       className="size-6"
                     />
@@ -141,7 +141,7 @@ function AdminArticleSection() {
                   <div className="w-[200px] flex justify-between items-center py-3 px-4 font-medium bg-white border border-[#DAD6D1] rounded-xl">
                     <p className="text-[#75716B]">Category</p>
                     <img
-                      src="/src/assets/expand_down_icon.png"
+                      src="/assets/expand_down_icon.png"
                       alt="expand_down"
                       className="size-6"
                     />
@@ -189,11 +189,11 @@ function AdminArticleSection() {
                         to={`/admin-article-edit/${article.id}`}
                         className="size-6 cursor-pointer"
                       >
-                        <img src="/src/assets/edit_icon.png" alt="edit_icon" />
+                        <img src="/assets/edit_icon.png" alt="edit_icon" />
                       </Link>
                       <button className="size-6 cursor-pointer">
                         <img
-                          src="/src/assets/trash_icon.png"
+                          src="/assets/trash_icon.png"
                           alt="trash_icon"
                         />
                       </button>
@@ -228,11 +228,11 @@ function AdminArticleSection() {
                     </p>
                     <div className="flex gap-5 py-5 px-6">
                       <button className="size-6 cursor-pointer">
-                        <img src="/src/assets/edit_icon.png" alt="edit_icon" />
+                        <img src="/assets/edit_icon.png" alt="edit_icon" />
                       </button>
                       <button className="size-6 cursor-pointer">
                         <img
-                          src="/src/assets/trash_icon.png"
+                          src="/assets/trash_icon.png"
                           alt="trash_icon"
                         />
                       </button>
@@ -247,7 +247,7 @@ function AdminArticleSection() {
                   <div className="flex">
                     <div className="flex items-center pr-[73px] pb-10 gap-7 border-b border-[#DAD6D1]">
                       <img
-                        src="/src/assets/mockup_profile_pic.jpeg"
+                        src="/assets/mockup_profile_pic.jpeg"
                         alt="profile_pic"
                         className="w-[120px] h-[120px] object-cover rounded-full"
                       />

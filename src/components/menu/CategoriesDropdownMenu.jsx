@@ -27,7 +27,7 @@ function CategoriesDropDownMenu({ value, onChange }) {
         >
           {selected}
           <img
-            src="/src/assets/expand_down_icon.png"
+            src="/assets/expand_down_icon.png"
             alt="expand_down_icon"
             className={`size-6 transition-transform ${
               open ? "rotate-180" : ""

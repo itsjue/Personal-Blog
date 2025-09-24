@@ -8,7 +8,7 @@ export function NavBar({ user }) {
   return (
     <nav className="flex justify-between items-center relative bg-[#F9F8F6] border-b-[1px] border-[#DAD6D1] px-16 py-3 lg:px-32 lg:py-4">
       <Link to={`/`}>
-        <img src="/src/assets/logo.png" alt="hh_logo" className="size-11" />
+        <img src="/assets/logo.png" alt="hh_logo" className="size-11" />
       </Link>
 
       <HamburgerMenu />
@@ -67,7 +67,7 @@ export function HeroSection() {
         </div>
         <div className="w-[386px] h-[529px] overflow-hidden rounded-2xl">
           <img
-            src="/src/assets/herosection_img.jpeg"
+            src="/assets/herosection_img.jpeg"
             alt="hero_img"
             className="w-full h-full object-cover opacity-80"
           />

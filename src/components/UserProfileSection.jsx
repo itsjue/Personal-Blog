@@ -41,7 +41,7 @@ export function UserProfileSection({ activeTab, user }) {
           <div className="w-fit bg-[#EFEEEB] p-10 ml-12 mt-[30px] rounded-2xl">
             <div className="flex items-center gap-7">
               <img
-                src="/src/assets/mockup_profile_pic.jpeg"
+                src="/assets/mockup_profile_pic.jpeg"
                 alt="profile_pic"
                 className="w-[120px] h-[120px] rounded-full object-cover"
               />

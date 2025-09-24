@@ -96,6 +96,20 @@ function AdminArticleSection() {
                 </div>
               </>
             )}
+            {activeTab === "resetPassword" && (
+              <div className="flex justify-between items-center h-[96px] px-[60px] border-b border-[#DAD6D1]">
+                <h3 className="font-semibold text-2xl text-[#26231E]">
+                  Reset password
+                </h3>
+
+                <Link
+                  to="/admin-article-create"
+                  className="bg-[#26231E] text-white py-3 px-10 rounded-full hover:bg-[#75716B] transition cursor-pointer"
+                >
+                  Reset password
+                </Link>
+              </div>
+            )}
 
             <div className="w-[1040px] flex justify-between mt-10 mx-auto">
               {(activeTab === "articleManagement" ||
@@ -244,32 +258,32 @@ function AdminArticleSection() {
                   </div>
                   <div className="flex flex-col mt-10 gap-7">
                     <div className="flex flex-col gap-1">
-                      <label htmlFor="name">Name</label>
+                      <label htmlFor="name" className="font-medium text-[#75716B]">Name</label>
                       <input
                         type="text"
-                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-sm"
+                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
                       />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <label htmlFor="username">Username</label>
+                      <label htmlFor="username" className="font-medium text-[#75716B]">Username</label>
                       <input
                         type="text"
-                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-sm"
+                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
                       />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email" className="font-medium text-[#75716B]">Email</label>
                       <input
                         type="email"
-                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-sm"
+                        className="max-w-[480px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
                       />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <label htmlFor="bio">Bio (max 120 letters)</label>
+                      <label htmlFor="bio" className="font-medium text-[#75716B]">Bio (max 120 letters)</label>
                       <textarea
                         name="bio"
                         id="bio"
-                        className="max-w-[1040px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-sm"
+                        className="max-w-[1040px] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
                       ></textarea>
                     </div>
                   </div>
@@ -280,45 +294,41 @@ function AdminArticleSection() {
               <>
                 <div>
                   <NotificationCard />
+                  <NotificationCard />
+                  <NotificationCard />
                 </div>
               </>
             )}
             {activeTab === "resetPassword" && (
               <>
-                <div className="w-[1040px] h-fit flex mt-5 mx-auto border border-[#DAD6D1] shadow-lg rounded-t-xl">
-                  <div className="w-full flex items-center justify-between pr-[120px]">
-                    <p className="font-medium text-[#75716B] py-3 px-6">
-                      Category
-                    </p>
+                <div className="flex flex-col gap-7 px-[60px]">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="currentPassword" className="font-medium text-[#75716B]">Current password</label>
+                    <input
+                      type="password"
+                      placeholder="Current password"
+                      className="max-w-[480px] font-medium text-[#75716B] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="newPassword" className="font-medium text-[#75716B]">New password</label>
+                    <input
+                      type="password"
+                      placeholder="New password"
+                      className="max-w-[480px] font-medium text-[#75716B] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="confirmPassword" className="font-medium text-[#75716B]">
+                      Confirm new password
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="Comfirm new password"
+                      className="max-w-[480px] font-medium text-[#75716B] bg-white py-3 px-4 border border-[#DAD6D1] rounded-lg"
+                    />
                   </div>
                 </div>
-                {Array.from(
-                  new Set(
-                    articles.map((article) => article.category || "General")
-                  )
-                ).map((category, index) => (
-                  <div
-                    key={index}
-                    className={`w-[1040px] flex items-center justify-between mx-auto border-l border-r border-b border-[#DAD6D1] 
-        ${index % 2 !== 0 ? "bg-[#EFEEEB]" : "bg-white"} 
-        ${index === category.length - 1 ? "rounded-b-xl" : ""}`}
-                  >
-                    <p className="w-[800px] text-[#43403B] py-5 px-6">
-                      {category}
-                    </p>
-                    <div className="flex gap-5 py-5 px-6">
-                      <button className="size-6 cursor-pointer">
-                        <img src="/src/assets/edit_icon.png" alt="edit_icon" />
-                      </button>
-                      <button className="size-6 cursor-pointer">
-                        <img
-                          src="/src/assets/trash_icon.png"
-                          alt="trash_icon"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                ))}
               </>
             )}
           </div>

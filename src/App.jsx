@@ -6,7 +6,7 @@ import ViewPostPage from "@/pages/ViewPostPage.jsx";
 import PageNotFound from "@/pages/PageNotFound.jsx";
 import LogInPage from "@/pages/LogInPage.jsx";
 import SignUpPage from "@/pages/SignUpPage.jsx";
-import AdminLogInPage from "@/pages/adminPages/AdminLoginPage.jsx";
+import AdminLogInPage from "@/pages/adminPages/AdminLogInPage.jsx";
 import UserProfilePage from "@/pages/userManagement/UserProfilePage.jsx";
 import RegistrationSuccessPage from "@/pages/RegistrationSuccessPage.jsx";
 import ArticleManagementPage from "@/pages/adminPages/ArticleManagementPage.jsx";

@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
-import HomePage from "/pages/HomePage";
-import { NavBar } from "./components/Nav-Hero-FooterSection";
-import ViewPostPage from "/pages/ViewPostPage";
-import PageNotFound from "/pages/PageNotFound";
-import LogInPage from "/pages/LoginPage";
-import SignUpPage from "/pages/SignUpPage";
-import AdminLogInPage from "/pages/adminPages/AdminLoginPage";
-import UserProfilePage from "/pages/userManagement/UserProfilePage";
-import RegistrationSuccessPage from "/pages/RegistrationSuccessPage";
-import ArticleManagementPage from "/pages/adminPages/ArticleManagementPage";
-import AdminCreateArticlePage from "/pages/adminPages/AdminCreateArticlePage";
-import AdminEditArticlePage from "/pages/adminPages/AdminEditArticlePage";
+import HomePage from "@/pages/HomePage.jsx";
+import { NavBar } from "@/components/Nav-Hero-FooterSection.jsx";
+import ViewPostPage from "@/pages/ViewPostPage.jsx";
+import PageNotFound from "@/pages/PageNotFound.jsx";
+import LogInPage from "@/pages/LogInPage.jsx";
+import SignUpPage from "@/pages/SignUpPage.jsx";
+import AdminLogInPage from "@/pages/adminPages/AdminLoginPage.jsx";
+import UserProfilePage from "@/pages/userManagement/UserProfilePage.jsx";
+import RegistrationSuccessPage from "@/pages/RegistrationSuccessPage.jsx";
+import ArticleManagementPage from "@/pages/adminPages/ArticleManagementPage.jsx";
+import AdminCreateArticlePage from "@/pages/adminPages/AdminCreateArticlePage.jsx";
+import AdminEditArticlePage from "@/pages/adminPages/AdminEditArticlePage.jsx";
 
 function AppRoutes({ user, setUser }) {
   const location = useLocation();

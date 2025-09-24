@@ -22,18 +22,25 @@ export function ArticleSection() {
 
   const getPosts = async () => {
     try {
-      const response = await axios.get('https://blog-post-project-api.vercel.app/posts');
+      const response = await axios.get(
+        "https://blog-post-project-api.vercel.app/posts"
+      );
       setPosts(response.data.posts);
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error);
     }
   };
 
-  const filteredPosts = (category === "Highlight" ? posts : posts.filter((p) => p.category === category))
-    .filter((p) =>
+  const filteredPosts = (
+    category === "Highlight"
+      ? posts
+      : posts.filter((p) => p.category === category)
+  ).filter(
+    (p) =>
       p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.description.toLowerCase().includes(search.toLowerCase())
-    );
+      p.description.toLowerCase().includes(search.toLowerCase()) ||
+      (p.content || "").toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="my-[40px]">
@@ -48,7 +55,9 @@ export function ArticleSection() {
             {articleCategories.map((cat) => (
               <li key={cat} className="flex items-center">
                 <button
-                  className={`text-[#75716B] font-medium py-3 px-5 rounded-[8px] cursor-pointer hover:bg-[#DAD6D1] hover:text-[#43403B] transition${category === cat ? ' bg-[#DAD6D1] text-[#43403B]' : ''}`}
+                  className={`text-[#75716B] font-medium py-3 px-5 rounded-[8px] cursor-pointer hover:bg-[#DAD6D1] hover:text-[#43403B] transition${
+                    category === cat ? " bg-[#DAD6D1] text-[#43403B]" : ""
+                  }`}
                   onClick={() => setCategory(cat)}
                 >
                   {cat}
@@ -61,7 +70,7 @@ export function ArticleSection() {
               type="text"
               placeholder="Search"
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               className="w-[360px] self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
             />
             <img
@@ -69,6 +78,28 @@ export function ArticleSection() {
               alt="search_icon"
               className="absolute size-6 -translate-x-1/2 -translate-y-1/2 top-1/2 right-[1%] opacity-70"
             />
+
+            {/* ✅ Suggestion list */}
+            {search && (
+              <ul className="absolute z-10 w-full max-h-60 mt-2 overflow-y-auto bg-white border border-[#DAD6D1] rounded-md shadow-md">
+                {filteredPosts.length > 0 ? (
+                  filteredPosts.map((p) => (
+                    <li
+                      key={p.id}
+                      className="px-4 py-2 hover:bg-[#EFEEEB] cursor-pointer"
+                      onClick={() => {
+                        // เมื่อกด suggestion ให้ setSearch เป็น title
+                        setSearch(p.title);
+                      }}
+                    >
+                      {p.title}
+                    </li>
+                  ))
+                ) : (
+                  <li className="px-4 py-2 text-[#75716B]">No results found</li>
+                )}
+              </ul>
+            )}
           </div>
         </div>
       </div>
@@ -80,7 +111,7 @@ export function ArticleSection() {
             type="text"
             placeholder="Search"
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             className="w-full self-center bg-white py-3 pr-3 pl-4 border border-[#DAD6D1] rounded-[8px] placeholder-[#75716B] placeholder:font-medium focus:border-[#75716B] focus:outline-none focus:ring-0"
           />
           <img
@@ -107,20 +138,20 @@ export function ArticleSection() {
       </div>
       <div className="w-[90%] h-auto mx-auto mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
           {filteredPosts.map((post, index) => (
-            <BlogCard key={post.id}
-            id={post.id}
-            title={post.title}
-            description={post.description}
-            author={post.author}
-            date={new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-            image={post.image}
-            category={post.category}
+            <BlogCard
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              description={post.description}
+              author={post.author}
+              date={new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+              image={post.image}
+              category={post.category}
             />
           ))}
         </div>

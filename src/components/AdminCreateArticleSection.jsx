@@ -1,9 +1,13 @@
 import AdminSideBarMenu from "./menu/AdminSideBarMenu";
 import CategoriesDropDownMenu from "./menu/CategoriesDropdownMenu";
 import { useState, useEffect } from "react";
+import StatusCard from "./cards/StatusCard";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function AdminCreateArticleSection({ article, setArticle }) {
   const [thumbnail, setThumbnail] = useState(article?.thumbnail || null);
+  const navigate = useNavigate();
 
   const handleThumbnailChange = (e) => {
     const file = e.target.files[0];
@@ -14,6 +18,24 @@ function AdminCreateArticleSection({ article, setArticle }) {
         setArticle({ ...article, thumbnail: reader.result });
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSaveDraft = async () => {
+    if (!article || !article.title) {
+      alert("Please enter at least a title");
+      return;
+    }
+
+    try {
+      await axios.post("https://blog-post-project-api.vercel.app/posts", {
+        ...article,
+        status: "draft",
+      });
+
+      navigate("/admin-articles", { state: { showStatus: "draftSaved" } });
+    } catch (err) {
+      console.error("Save draft failed:", err);
     }
   };
 
@@ -31,10 +53,10 @@ function AdminCreateArticleSection({ article, setArticle }) {
   }, [article, setArticle]);
 
   useEffect(() => {
-  if (article?.thumbnail) {
-    setThumbnail(article.thumbnail);
-  }
-}, [article?.thumbnail]);
+    if (article?.thumbnail) {
+      setThumbnail(article.thumbnail);
+    }
+  }, [article?.thumbnail]);
 
   return (
     <div className="flex">
@@ -46,7 +68,11 @@ function AdminCreateArticleSection({ article, setArticle }) {
               {article?.id ? "Edit Article" : "Create Article"}
             </h3>
             <div className="flex gap-2">
-              <button className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition cursor-pointer">
+              <button
+              type="button"
+                onClick={handleSaveDraft}
+                className="bg-white text-[#26231E] border border-[#75716B] px-10 py-3 rounded-full hover:text-[#75716B] hover:border-[#75716B] transition cursor-pointer"
+              >
                 Save as draft
               </button>
               <button className="bg-[#26231E] text-white py-3 px-10 rounded-full hover:bg-[#75716B] transition cursor-pointer">

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom"; // เอา BrowserRouter ออก
 import { useState } from "react";
 import HomePage from "@/pages/HomePage.jsx";
 import { NavBar } from "@/components/Nav-Hero-FooterSection.jsx";
@@ -25,15 +25,31 @@ function AppRoutes({ user, setUser }) {
         <Route path="/posts/:id" element={<ViewPostPage />} />
         <Route path="/login" element={<LogInPage setUser={setUser} />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/signup/successfully" element={<RegistrationSuccessPage />} />
+        <Route
+          path="/signup/successfully"
+          element={<RegistrationSuccessPage />}
+        />
 
-        <Route path="/user/profile" element={<UserProfilePage defaultTab="profile" user={user} />} />
-        <Route path="/user/resetpassword" element={<UserProfilePage defaultTab="reset" user={user} />} />
+        <Route
+          path="/user/profile"
+          element={<UserProfilePage defaultTab="profile" user={user} />}
+        />
+
+        <Route
+  path="/user/resetpassword"
+  element={<UserProfilePage defaultTab="reset" user={user} />}
+/>
 
         <Route path="/admin-login" element={<AdminLogInPage />} />
         <Route path="/admin-articles" element={<ArticleManagementPage />} />
-        <Route path="/admin-article-create" element={<AdminCreateArticlePage />} />
-        <Route path="/admin-article-edit/:id" element={<AdminEditArticlePage />} />
+        <Route
+          path="/admin-article-create"
+          element={<AdminCreateArticlePage />}
+        />
+        <Route
+          path="/admin-article-edit/:id"
+          element={<AdminEditArticlePage />}
+        />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -44,11 +60,7 @@ function AppRoutes({ user, setUser }) {
 function App() {
   const [user, setUser] = useState(null);
 
-  return (
-    <Router>
-      <AppRoutes user={user} setUser={setUser} />
-    </Router>
-  );
+  return <AppRoutes user={user} setUser={setUser} />; // เอา Router ออก
 }
 
 export default App;

@@ -28,9 +28,7 @@ function AuthProvider(props) {
 
     try {
       setState((prevState) => ({ ...prevState, getUserLoading: true }));
-      const response = await axios.get(
-        "http://localhost:5000/auth/get-user"
-      );
+      const response = await axios.get("http://localhost:5000/auth/get-user");
       setState((prevState) => ({
         ...prevState,
         user: response.data,
@@ -79,10 +77,7 @@ function AuthProvider(props) {
   const register = async (data) => {
     try {
       setState((prevState) => ({ ...prevState, loading: true, error: null }));
-      await axios.post(
-        "http://localhost:5000/auth/register",
-        data
-      );
+      await axios.post("http://localhost:5000/auth/register", data);
       setState((prevState) => ({ ...prevState, loading: false, error: null }));
       navigate("/sign-up/success");
     } catch (error) {
@@ -124,4 +119,3 @@ function AuthProvider(props) {
 const useAuth = () => React.useContext(AuthContext);
 
 export { AuthProvider, useAuth };
-

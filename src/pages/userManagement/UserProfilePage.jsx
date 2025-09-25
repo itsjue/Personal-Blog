@@ -1,23 +1,41 @@
 import { UserProfileSection, UserResetPasswordSection } from "@/components/UserProfileSection";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { mockUsersData } from "@/data/mockUsers";
+import { supabase } from "@/lib/supabaseClient";
 
-function UserProfilePage({ defaultTab }) {
+function UserProfilePage({ defaultTab, user }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, username, email } = mockUsersData[0];
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
-    setCurrentUser(mockUsersData[0]);
-  })
-
+  // กำหนด tab
   const initialTab = location.pathname.includes("resetpassword")
     ? "reset"
     : defaultTab || "profile";
   const [activeTab, setActiveTab] = useState(initialTab);
 
+  // Fetch user data จาก Supabase
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchUser = async () => {
+      const { data, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", user)
+        .single(); // single() เพราะเราจะได้ row เดียว
+
+      if (error) {
+        console.error("Error fetching user:", error.message);
+      } else {
+        setCurrentUser(data);
+      }
+    };
+
+    fetchUser();
+  }, [user]);
+
+  // Sync tab กับ path
   useEffect(() => {
     if (activeTab === "profile" && location.pathname !== "/user/profile") {
       navigate("/user/profile", { replace: true });
@@ -26,18 +44,20 @@ function UserProfilePage({ defaultTab }) {
     }
   }, [activeTab, navigate, location.pathname]);
 
+  if (!currentUser) return <p>Loading...</p>;
+
   return (
     <div className="w-screen">
       <div className="w-fit flex flex-col items-start m-auto my-[52px]">
         <div className="flex items-center">
           <img
-            src="/assets/mockup_profile_pic.jpeg"
+            src={currentUser.profile_pic || "/assets/mockup_profile_pic.jpeg"}
             alt="profile_pic"
             className="w-[60px] h-[60px] rounded-full object-cover"
           />
           <div className="flex gap-1 text-2xl text-[#75716B] font-semibold ml-4">
             <h3>
-              {name}
+              {currentUser.name}
               <span className=" ml-4 pl-4 text-[#26231E] border-l-2 border-[#DAD6D1]">
                 {activeTab === "profile" ? "Profile" : "Reset password"}
               </span>
@@ -71,6 +91,7 @@ function UserProfilePage({ defaultTab }) {
               <p>Reset password</p>
             </button>
           </div>
+
           <UserProfileSection activeTab={activeTab} user={currentUser} />
           <UserResetPasswordSection activeTab={activeTab} user={currentUser} />
         </div>

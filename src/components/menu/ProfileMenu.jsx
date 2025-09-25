@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {useNavigate, useLocation } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient"; // ✅ import supabase client
 
 function ProfileMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleCloseTab = () => setIsOpen(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,7 +12,19 @@ function ProfileMenu({ user }) {
     setIsOpen(false);
   };
 
-  const activeTab = location.pathname === "/user/resetpassword" ? "reset" : "profile";
+  const handleLogout = async () => {
+    setIsOpen(false);
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Logout error:", error.message);
+    } else {
+      // ✅ เคลียร์ state/user context ที่เก็บ user ด้วยถ้ามี
+      navigate("/login"); // ส่งไปหน้า login
+    }
+  };
+
+  const activeTab =
+    location.pathname === "/user/resetpassword" ? "reset" : "profile";
 
   return (
     <>
@@ -36,26 +47,34 @@ function ProfileMenu({ user }) {
 
       {isOpen && (
         <div className="absolute top-19 bg-[#f9f8f6] w-[249px] rounded-xl shadow-xl">
+          <button
+            onClick={() => handleNavigate("/user/profile")}
+            className="flex py-3 px-4 gap-3 cursor-pointer"
+          >
+            <img
+              src="/assets/user_icon.png"
+              alt="profile_icon"
+              className="size-6 opacity-90"
+            />
+            <p className="font-medium text-[#43403b]">Profile</p>
+          </button>
 
-            <button onClick={() => handleNavigate("/user/profile")} className="flex py-3 px-4 gap-3 cursor-pointer">
-              <img
-                src="/assets/user_icon.png"
-                alt="profile_icon"
-                className="size-6 opacity-90"
-              />
-              <p className="font-medium text-[#43403b]">Profile</p>
-            </button>
+          <button
+            onClick={() => handleNavigate("/user/resetpassword")}
+            className="flex py-3 px-4 gap-3 cursor-pointer"
+          >
+            <img
+              src="/assets/reset_icon.png"
+              alt="reset_icon"
+              className="size-6 opacity-90"
+            />
+            <p className="font-medium text-[#43403b]">Reset password</p>
+          </button>
 
-            <button  onClick={() => handleNavigate("/user/resetpassword")} className="flex py-3 px-4 gap-3 cursor-pointer">
-              <img
-                src="/assets/reset_icon.png"
-                alt="reset_icon"
-                className="size-6 opacity-90"
-              />
-              <p className="font-medium text-[#43403b]">Reset password</p>
-            </button>
-
-          <button className="flex py-3 px-4 gap-3 border-t border-[#dad6d1] cursor-pointer">
+          <button
+            onClick={handleLogout} // ✅ logout action
+            className="flex py-3 px-4 gap-3 border-t border-[#dad6d1] cursor-pointer"
+          >
             <img
               src="/assets/signout_icon.png"
               alt="signout_icon"
